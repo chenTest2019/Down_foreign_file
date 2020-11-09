@@ -5,10 +5,12 @@ on:
     types: [started]
     
 env:
-  FILE_URL: https://master.dl.sourceforge.net/project/xiaomi-eu-multilang-miui-roms/xiaomi.eu/MIUI-WEEKLY-RELEASES/20.8.27/xiaomi.eu_multi_MIMAX3_20.8.27_v12-10.zip
-  FILE_NAME: SGSI-build-tool.tar
-  GITHUB_RELEASE: true
-  URL_DOWN: false
+  #FILE_URL: https://master.dl.sourceforge.net/project/xiaomi-eu-multilang-miui-roms/xiaomi.eu/MIUI-WEEKLY-RELEASES/20.8.27/xiaomi.eu_multi_MIMAX3_20.8.27_v12-10.zip
+  #FILE_NAME: SGSI-build-tool.tar
+  FILE_URL: https://dl.fbaipublicfiles.com/pifuhd/checkpoints/pifuhd.pt
+  FILE_NAME: pifuhd.pt
+  GITHUB_RELEASE: false
+  URL_DOWN: true
     
 jobs:
   build:
@@ -27,13 +29,13 @@ jobs:
       run: |
         wget -O $FILE_NAME $FILE_URL
       
-    - name: Download Github Release
-      if: env.GITHUB_RELEASE == 'true'
-      uses: robinraju/release-downloader@v1
-      with:
-        repository: "xiaoxindada/SGSI-build-tool"
-        latest: true
-        fileName: "SGSI-build-tool.tar"
+    #- name: Download Github Release
+    #  if: env.GITHUB_RELEASE == 'true'
+    #  uses: robinraju/release-downloader@v1
+    #  with:
+    #    repository: "xiaoxindada/SGSI-build-tool"
+    #    latest: true
+    #    fileName: "SGSI-build-tool.tar"
 
     - name: Upload File to WeTransfer
       run: |
